@@ -4,6 +4,7 @@
 
 const express = require("express");
 const app = express();
+
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require('body-parser')
@@ -18,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use("/add_user", routes.addUser);
-app.use('/get_user',routes.getUser)
+app.post('/get_user',routes.getUser)
+app.put('/update_user',routes.updateUser)
 mongoose.connect(
   "mongodb+srv://shop_data:pass@cluster0.slq5v.mongodb.net/?retryWrites=true&w=majority",
   {
